@@ -1,0 +1,30 @@
+#!/bin/bash
+
+#Обновляем репозитории
+sudo apt-get update
+sudo apt-get upgrade
+
+#Устанавливаем curl
+sudo apt-get install -y curl
+
+#Устанавливаем Node.js
+curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+sudo apt-get install -y nodejs
+
+#Устанавливаем Nginx
+sudo apt-get install -y Nginx
+
+#Устанавливаем Yarn и PM2
+npm i -g yarn
+npm i -g pm2
+
+#Включаем FireWall
+sudo ufw enable -y
+
+#Добавляем репозитории для CertBot
+sudo apt install -y software-properties-common
+sudo add-apt-repository ppa:certbot/certbot
+
+#Обновляем правила ufw
+sudo ufw allow 'Nginx Full'
+sudo ufw delete allow 'Nginx HTTP'
