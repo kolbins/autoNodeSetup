@@ -12,7 +12,7 @@ curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 sudo apt-get install -y nodejs
 
 #Устанавливаем Nginx
-sudo apt-get install -y Nginx
+sudo apt-get install -y nginx
 
 #Устанавливаем Yarn и PM2
 npm i -g yarn
