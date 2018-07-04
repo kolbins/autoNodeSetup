@@ -25,6 +25,10 @@ sudo ufw enable -y
 sudo apt install -y software-properties-common
 sudo add-apt-repository ppa:certbot/certbot
 
+#Устанавливаем все для SSL
+sudo apt-get update
+sudo apt-get install -y python-certbot-nginx
+
 #Обновляем правила ufw
 sudo ufw allow 'Nginx Full'
 sudo ufw delete allow 'Nginx HTTP'
