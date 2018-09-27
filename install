@@ -1,18 +1,18 @@
 #!/bin/bash
 
 #Обновляем репозитории
-sudo apt-get update -y
-sudo apt-get upgrade -y
+sudo apt update -y
+sudo apt upgrade -y
 
 #Устанавливаем curl
-sudo apt-get install -y curl
+sudo apt install -y curl
 
 #Устанавливаем Node.js
 curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-sudo apt-get install -y nodejs
+sudo apt install -y nodejs
 
 #Устанавливаем Nginx
-sudo apt-get install -y nginx
+sudo apt install -y nginx
 
 #Устанавливаем Yarn и PM2
 npm i -g yarn
@@ -20,15 +20,23 @@ npm i -g pm2
 
 #Включаем FireWall
 sudo ufw enable -y
+sudo ufw allow 22
 
 #Добавляем репозитории для CertBot
 sudo apt install -y software-properties-common
 sudo add-apt-repository ppa:certbot/certbot
 
 #Устанавливаем все для SSL
-sudo apt-get update
-sudo apt-get install -y python-certbot-nginx
+sudo apt update
+sudo apt install -y python-certbot-nginx
 
 #Обновляем правила ufw
 sudo ufw allow 'Nginx Full'
 sudo ufw delete allow 'Nginx HTTP'
+
+#Создаем файл подкачки
+sudo fallocate -l 1G /swapfile
+sudo chmod 600 /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
+echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
