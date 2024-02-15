@@ -20,6 +20,9 @@ curl -fsSL https://bun.sh/install | bash
 #Устанавливаем Yarn и PM2
 npm i -g pm2
 
+#Устанавливаем ffmpeg
+apt install ffmpeg -y
+
 #Устанавливаем все для SSL
 sudo apt update
 sudo snap install --classic certbot
